@@ -1,7 +1,7 @@
-<mat-card>
-  <mat-card-content>
+
+    <form [formGroup]="Enregistrer" (ngSubmit)="HandleSubmit()">
       <mat-horizontal-stepper labelPosition="bottom"  [linear]="isLinear" #stepper>
-        <form [formGroup]="Enregistrer" (ngSubmit)="HandleSubmit()">
+        <!--STEP1-->
         <mat-step [stepControl]="step1form">
           <div formGroupName="step1">
 
@@ -10,14 +10,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <mat-form-field class="w-100">
-                    <mat-label>Nom</mat-label>
-                    <input matInput placeholder=" " formControlName="firstname">
+                    
+                    <input matInput placeholder=" Nom" formControlName="firstname">
                   </mat-form-field>
                 </div>
                 <div class="col-md-6">
                   <mat-form-field class="w-100">
-                    <mat-label>Prénom</mat-label>
-                    <input matInput placeholder=" " formControlName="lastname">
+                   
+                    <input matInput placeholder=" Prénom" formControlName="lastname">
                   </mat-form-field>
                 </div>
               </div>
@@ -71,8 +71,8 @@
                 <div class="col-md-6">
                   <div class="position-relative mb-3 custom-form-row">
                     <mat-form-field class="w-100">
-                      <mat-label>Pays de Résidence :</mat-label>
-                      <input matInput name="PaysResidence" id="PaysResidence" placeholder=" " type="text" formControlName="PaysResidence">
+                      
+                      <input matInput name="PaysResidence" id="PaysResidence" placeholder="Pays de Résidence " type="text" formControlName="PaysResidence">
                     </mat-form-field>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field class="w-100">
-                  <mat-label>Téléphone</mat-label>
+                  
                   <input matInput name="phone" id="phone" placeholder="Téléphone" type="tel" formControlName="phone">
                 </mat-form-field>
               </div>
@@ -230,7 +230,7 @@
           </div>
         </mat-step>
 
-        <!-- Remaining mat-steps -->
+        <!-- STEP2 -->
 
         <mat-step [stepControl]="step2form">
           <div formGroupName="step2">
@@ -330,9 +330,9 @@
             
             
               <div>
-              <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
-              <button mat-button matStepperNext  class="btn btn-warning custom-next-button">suivant</button>
-            </div>
+                <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
+                <button mat-button matStepperNext  class="btn btn-warning custom-next-button">suivant</button>
+              </div>
           </div>
         </mat-step>
         
@@ -349,48 +349,80 @@
       
       
       
-        <<mat-step [stepControl]="step3form">
+        <!-- ... Other steps ... -->
+        <mat-step [stepControl]="step3form">
+
+          <h3>Ajouter une Banque</h3>
           <ng-template matStepLabel>Informations bancaires</ng-template>
-          <div formGroupName="step3">
-            <div class="main-card mb-3 card">
-              <div class="card-body d-flex justify-content-between align-items-center">
-                <h5 class="card-title">BANQUES</h5>
-                <button class="mb-2 me-2 btn-transition btn btn-outline-success" (click)="ajouterBanque()">Ajouter un Banque</button>
+          <div formGroupName="step3" >
+            <div class="mt-5 box" class="d-flex justify-content-center align-items-center vh-100">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="banque" class="form-control" placeholder="Banque">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="adressebanque" class="form-control" placeholder="Adresse">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="code" class="form-control" placeholder="Code BIC/SWIFT">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="numCompte" class="form-control" placeholder="Numéro compte bancaire">
+                    </div>
+                  </div>
+                </div>
               </div>
-              <table class="mb-0 table table-striped">
+              <div class="form-row mt-4" class="d-flex justify-content-center align-items-center vh-100">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-primary" (click)="addItem()">Ajouter</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 mt-4 mb-4 box" class="d-flex justify-content-center align-items-center vh-100">
+              <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Banque</th>
                     <th>Adresse</th>
-                    <th>Code BIC/SWIFT</th>
+                    <th>Code</th>
                     <th>Numéro du Compte Bancaire</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let banque of banques.controls; let i = index">
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td><input type="text" [formControlName]="i + '.banque'" class="form-control"></td>
-                    <td><input type="text" [formControlName]="i + '.adresse'" class="form-control"></td>
-                    <td><input type="text" [formControlName]="i + '.bic'" class="form-control"></td>
-                    <td><input type="text" [formControlName]="i + '.rib'" class="form-control"></td>
-                    <td>
-                      <button mat-button color="warn" (click)="supprimerBanque(i)" class="custom-delete-button">
-                        Supprimer 
-                      </button>
-                      
-                    </td>
+                  <tr *ngFor="let item of listData">
+                    <td><span>{{ item.banque }}</span></td>
+                    <td><span>{{ item.adressebanque }}</span></td>
+                    <td><span>{{ item.code }}</span></td>
+                    <td><span>{{ item.numCompte }}</span></td>
+                    <td><button type="button" class="btn btn-primary add-button" (click)="removeItem(item)">Supprimer</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div>
               <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
-              <button mat-button matStepperNext class="btn btn-warning custom-next-button">suivant</button>
+              <button mat-button matStepperNext class="btn btn-warning custom-next-button">Suivant</button>
             </div>
           </div>
         </mat-step>
+        
+
+<!-- ... Other steps ... -->
+
         
         
       
@@ -409,19 +441,19 @@
           <div>
             <mat-form-field>
             <mat-label>Nom et Prénom Agent de paiement</mat-label>
-            <input matInput placeholder="Nom et Prénom" formControlName="nomPrenomAgent" required>
+            <input matInput placeholder="Nom et Prénom" formControlName="nomPrenomAgent" >
           </mat-form-field>
         </div>
-          <div><mat-form-field>
+         <div><mat-form-field>
             <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="datePicker" placeholder="Sélectionner une date" formControlName="datesubmit" required>
+            <input matInput [matDatepicker]="datePicker" placeholder="Sélectionner une date" formControlName="datesubmit" >
             <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
             <mat-datepicker #datePicker></mat-datepicker>
           </mat-form-field>
           </div>
           <div>
             <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
-            <!--<button mat-raised-button class="btn btn-warning custom-next-button" (click)="HandleSubmit()">Enregistrer</button>-->
+            <button mat-raised-button class="btn btn-warning custom-next-button" >Enregistrer</button>
 
           </div>
         </div>
@@ -430,7 +462,8 @@
       
       
         
-    </form>   
+      
       </mat-horizontal-stepper>
-</mat-card-content>
-</mat-card>
+    </form> 
+
+*

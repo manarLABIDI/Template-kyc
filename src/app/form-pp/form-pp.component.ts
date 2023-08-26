@@ -8,13 +8,43 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./form-pp.component.css']
 })
 export class FormPpComponent implements OnInit {
+
+  
+  constructor(private formBuilder: FormBuilder) {
+    this.listData = [];
+  }
   
   Enregistrer!: FormGroup;
-  banques!: FormArray;
-  isLinear=true;
+  listData: any;
+  isLinear=false;
+
+  
+
+ 
  
 
-  constructor(private formBuilder: FormBuilder) {}
+  
+  public addItem(): void {
+    // Get the step3 form group
+    const step3Group = this.Enregistrer.get('step3') as FormGroup;
+  
+    // Add the step3 form group's value to the listData array
+    this.listData.push(step3Group.value);
+  
+    // Optionally, you can clear the form fields if needed
+    step3Group.reset();
+  }
+  
+
+  public removeItem(element: any): void {
+    const index = this.listData.indexOf(element);
+    if (index !== -1) {
+      this.listData.splice(index, 1);
+    }
+  }
+  
+  
+
 
   ngOnInit(): void {
     this.Enregistrer = this.formBuilder.group({
@@ -40,7 +70,7 @@ export class FormPpComponent implements OnInit {
 
       }),
       step2: this.formBuilder.group({
-        niveauCompte: [''],
+        comptePaiement: [''],
         virementInterne: [''],
         virementBancaire: [''],
         autreMoyenPaiement: [''],
@@ -65,34 +95,25 @@ export class FormPpComponent implements OnInit {
         
       }),
       step3: this.formBuilder.group({
-        banques: this.formBuilder.array([]) // Initialize an empty form array for banques
+        banque: [''], // Make sure this corresponds to the name used in the template
+        adressebanque: [''],
+        code: [''],
+        numCompte: [''],
       }),
+
+
+      
       step4: this.formBuilder.group({
         certification: [false, Validators.requiredTrue],
         nomPrenomAgent: ['', Validators.required],
-        datesubmit: ['', Validators.required],
+        datesubmit: { value: new Date(), disabled: true },
       })
     });
 
-    this.banques = this.Enregistrer.get('step3.banques') as FormArray;
+    
+   
   }
-
-  ajouterBanque(): void {
-    this.banques.push(this.createBanqueFormGroup());
-  }
-
-  supprimerBanque(index: number): void {
-    this.banques.removeAt(index);
-  }
-
-  createBanqueFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      banque: ['', Validators.required],
-      adresse: ['', Validators.required],
-      bic: ['', Validators.required],
-      rib: ['', Validators.required]
-    });
-  }
+  
 
   
 
@@ -112,13 +133,23 @@ export class FormPpComponent implements OnInit {
   get step4form(){
     return this.Enregistrer.get("step4") as FormGroup;
   }
+
+  
+
   HandleSubmit() {
     if (this.Enregistrer.valid) {
-      // Perform form submission logic here
-      console.log(this.Enregistrer.value); // Example: log form values
+      console.log(this.Enregistrer.value);
       
-      // After successful submission, you can navigate to another page
-      // For now, let's just log a message
+      const step4Group = this.Enregistrer.get('step4') as FormGroup;
+      const datesubmitControl = step4Group.get('datesubmit');
+
+      if (datesubmitControl) {
+        const currentDate = datesubmitControl.value;
+        this.Enregistrer.reset({
+          step4: { datesubmit: currentDate }
+        });
+      }
+
       console.log('Form submitted successfully');
     }
   }
