@@ -392,27 +392,29 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-8 mt-4 mb-4 box" class="d-flex justify-content-center align-items-center vh-100">
+            <div class="col-md-8 mt-4 mb-4 bbox" class="d-flex justify-content-center align-items-center vh-100">
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Banque</th>
+                    <th>Nom</th>
                     <th>Adresse</th>
-                    <th>Code</th>
-                    <th>Numéro du Compte Bancaire</th>
+                    <th>Genre</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of listData">
-                    <td><span>{{ item.banque }}</span></td>
-                    <td><span>{{ item.adressebanque }}</span></td>
-                    <td><span>{{ item.code }}</span></td>
-                    <td><span>{{ item.numCompte }}</span></td>
-                    <td><button type="button" class="btn btn-primary add-button" (click)="removeItem(item)">Supprimer</button></td>
+                  <tr *ngFor="let item of listData.controls; let i = index">
+                    <td><span>{{ item.get('banqueName').value }}</span></td>
+                    <td><span>{{ item.get('adressebanque').value }}</span></td>
+                    <td><span>{{ item.get('codebanque').value }}</span></td>
+                    <td><span>{{ item.get('numeroCompte').value }}</span></td>
+                    <td><button type="button" class="btn btn-danger" (click)="removeItem(i)">Supprimer</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            
+                
             <div>
               <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
               <button mat-button matStepperNext class="btn btn-warning custom-next-button">Suivant</button>
