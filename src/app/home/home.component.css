@@ -1,0 +1,6 @@
+.menubtn {
+    background-color: #FF8C00; /* Set the desired background color */
+    color: white; /* Set the text color to contrast with the background */
+    border: none; /* Remove the border */
+    margin-right: 8px; /* Add spacing to the right for separation */
+  }

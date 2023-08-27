@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormPpComponent } from './form-pp/form-pp.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 // Import Angular Material modules
@@ -18,14 +20,17 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 
+
 import { MatTableModule } from '@angular/material/table';
 import { StoreModule } from '@ngrx/store';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormPpComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import { StoreModule } from '@ngrx/store';
     MatRadioModule,
     MatIconModule,
     MatTableModule,
-    StoreModule.forRoot({}, {}),
+    MatMenuModule,
+    MatToolbarModule,
     
   ],
   providers: [],

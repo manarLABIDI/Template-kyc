@@ -11,7 +11,7 @@ export class FormPpComponent implements OnInit {
 
   
   constructor(private formBuilder: FormBuilder) {
-    
+    this.listData = [];
   }
   
   Enregistrer!: FormGroup;
@@ -23,24 +23,25 @@ export class FormPpComponent implements OnInit {
  
  
 
+  
   public addItem(): void {
+    // Get the step3 form group
     const step3Group = this.Enregistrer.get('step3') as FormGroup;
-    const listDataArray = this.Enregistrer.get('listData') as FormArray;
   
-    listDataArray.push(step3Group); // Push the step3 form group
-    step3Group.reset(); // Optionally reset the form group
+    // Add the step3 form group's value to the listData array
+    this.listData.push(step3Group.value);
+  
+    // Optionally, you can clear the form fields if needed
+    step3Group.reset();
   }
-  
   
 
-  public removeItem(index: number): void {
-    const listDataArray = this.Enregistrer.get('listData') as FormArray;
-  
-    if (index >= 0 && index < listDataArray.length) {
-      listDataArray.removeAt(index);
+  public removeItem(element: any): void {
+    const index = this.listData.indexOf(element);
+    if (index !== -1) {
+      this.listData.splice(index, 1);
     }
   }
-  
   
   
 
@@ -106,9 +107,7 @@ export class FormPpComponent implements OnInit {
         certification: [false, Validators.requiredTrue],
         nomPrenomAgent: ['', Validators.required],
         datesubmit: { value: new Date(), disabled: true },
-      }),
-
-      listData: this.formBuilder.array([]) 
+      })
     });
 
     

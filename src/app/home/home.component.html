@@ -1,0 +1,13 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button (click)="drawer.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    
+    <span class="example-spacer"></span>
+    <button routerLink="/" mat-button>Home</button>
+    <button [matMenuTriggerFor]="lvl1master" mat-button>Formulaire</button>
+    <mat-menu #lvl1master="matMenu">
+        <button routerLink="/" mat-menu-item>Home</button>
+        <button routerLink="/formPP" mat-menu-item>Formulaire Personne Physique </button>
+    </mat-menu>
+</mat-toolbar>
