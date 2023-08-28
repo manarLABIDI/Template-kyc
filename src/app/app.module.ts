@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormPpComponent } from './form-pp/form-pp.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DatePipe } from '@angular/common';
+import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
+
+
 
 
 // Import Angular Material modules
@@ -25,7 +29,8 @@ import { MatTableModule } from '@angular/material/table';
 import { StoreModule } from '@ngrx/store';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormPmComponent } from './form-pm/form-pm.component';
+import { FormPMComponent } from './form-pm/form-pm.component';
+
 
 
 @NgModule({
@@ -34,7 +39,7 @@ import { FormPmComponent } from './form-pm/form-pm.component';
     FormPpComponent,
     HomeComponent,
     NavbarComponent,
-    FormPmComponent,
+    FormPMComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,9 +59,11 @@ import { FormPmComponent } from './form-pm/form-pm.component';
     MatTableModule,
     MatMenuModule,
     MatToolbarModule,
+    AngularSignaturePadModule
+    
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
