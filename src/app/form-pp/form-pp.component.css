@@ -46,6 +46,9 @@
     padding: 20px; /* Adding some padding for a better look */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow */
   }
-    
-  
+
+  .form-container {
+    margin-top: 80px; /* Adjust this value to provide space below the navbar */
+    padding: 20px; /* Add padding for a better layout */
+  }
   
