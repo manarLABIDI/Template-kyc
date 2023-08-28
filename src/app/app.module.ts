@@ -24,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { StoreModule } from '@ngrx/store';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormPmComponent } from './form-pm/form-pm.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     FormPpComponent,
     HomeComponent,
+    NavbarComponent,
+    FormPmComponent,
   ],
   imports: [
     BrowserModule,

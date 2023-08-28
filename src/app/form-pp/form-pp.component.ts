@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Router, ActivatedRoute  } from '@angular/router';
 
 
 @Component({
@@ -9,14 +10,15 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 })
 export class FormPpComponent implements OnInit {
 
-  
-  constructor(private formBuilder: FormBuilder) {
+  showFirstStep: boolean = false;
+
+  constructor(private formBuilder: FormBuilder , private router: Router) {
     this.listData = [];
   }
   
   Enregistrer!: FormGroup;
   listData: any;
-  isLinear=false;
+  isLinear=true;
 
   
 
@@ -47,6 +49,7 @@ export class FormPpComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
     this.Enregistrer = this.formBuilder.group({
       step1: this.formBuilder.group({
         firstname: [''],
@@ -135,22 +138,23 @@ export class FormPpComponent implements OnInit {
   }
 
   
-
   HandleSubmit() {
     if (this.Enregistrer.valid) {
       console.log(this.Enregistrer.value);
-      
+  
       const step4Group = this.Enregistrer.get('step4') as FormGroup;
       const datesubmitControl = step4Group.get('datesubmit');
-
+  
       if (datesubmitControl) {
         const currentDate = datesubmitControl.value;
         this.Enregistrer.reset({
           step4: { datesubmit: currentDate }
         });
       }
-
+  
       console.log('Form submitted successfully');
+  
+      
     }
   }
-}
+}  
