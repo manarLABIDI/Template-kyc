@@ -126,5 +126,9 @@
     width: 110px;
     margin: 0;
 }
-
+.form-container {
+    margin-top: 80px; /* Adjust this value to provide space below the navbar */
+    padding: 20px; /* Add padding for a better layout */
+  }
+  
   

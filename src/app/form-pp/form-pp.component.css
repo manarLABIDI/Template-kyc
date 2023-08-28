@@ -38,14 +38,7 @@
     cursor: pointer; /* Change cursor to pointer on hover */
   }
 
-  .box {
-    width: 50%;
-    border: 1px solid rgb(145, 138, 138);
-    border-radius: 10px; /* Adding rounded corners */
-    
-    padding: 20px; /* Adding some padding for a better look */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow */
-  }
+ 
 
   .form-container {
     margin-top: 80px; /* Adjust this value to provide space below the navbar */
