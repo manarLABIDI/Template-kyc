@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router  } from '@angular/router';
 import { NgSignaturePadOptions,SignaturePadComponent } from '@almothafar/angular-signature-pad/public-api';
 import {PointGroup} from 'signature_pad';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormPPServiceService } from '../service/form-pp-service.service';
 
 
@@ -17,7 +18,7 @@ export class FormPpComponent implements OnInit {
 
   showFirstStep: boolean = false;
 
-  constructor(private formBuilder: FormBuilder,  private router: Router, private _formService: FormPPServiceService) {
+  constructor(private formBuilder: FormBuilder,  private router: Router, private _formService: FormPPServiceService, private _snackBar: MatSnackBar) {
     this.listData = [];
   }
   
@@ -169,7 +170,13 @@ export class FormPpComponent implements OnInit {
       this._formService.submitForm(this.Enregistrer.value).subscribe(
         (response) => {
           console.log('Form submitted successfully');
-          // Optionally, you can navigate to a different page or perform other actions upon success.
+          this.signaturePad.clear();
+          this._snackBar.open('formulaire ajouté avec succès', 'Close', {
+            duration: 3000, // Duration of the message in milliseconds
+          }).afterDismissed().subscribe(() => {
+            // Redirect to the home page after the alert is closed
+            this.router.navigate(['/']);
+          });
         },
         (error) => {
           console.error('Form submission failed', error);
@@ -179,6 +186,14 @@ export class FormPpComponent implements OnInit {
   
       this.Enregistrer.reset();
     }
+  }
+ 
+  
+  
+  
+  onClose() {
+    
+    this.router.navigate(['/']);
   }
   
 

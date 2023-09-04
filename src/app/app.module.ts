@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
+
+
 // Import Angular Material modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -26,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 import { MatTableModule } from '@angular/material/table';
@@ -63,7 +67,8 @@ import { FormPMComponent } from './form-pm/form-pm.component';
     MatMenuModule,
     MatToolbarModule,
     AngularSignaturePadModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
     
     
   ],

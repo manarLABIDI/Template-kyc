@@ -20,7 +20,7 @@
     {
       "step1": {
         "firstname": "manar",
-        "lastname": "",
+        "lastname": "labidi",
         "ddn": "",
         "Nationalite": "",
         "AdressePersonnelle": "",
@@ -47,8 +47,8 @@
         "zoneActivite": ""
       },
       "step2": {
-        "comptePaiement": "Niveau 1",
-        "virementInterne": true,
+        "comptePaiement": "",
+        "virementInterne": "",
         "virementBancaire": "",
         "autreMoyenPaiement": "",
         "autreMoyenPaiementText": "",
@@ -76,7 +76,7 @@
       },
       "step4": {
         "certification": true,
-        "nomPrenomAgent": "manar labidi"
+        "nomPrenomAgent": "labidi manar"
       },
       "id": 1
     }
