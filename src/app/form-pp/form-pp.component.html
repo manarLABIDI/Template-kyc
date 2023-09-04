@@ -388,7 +388,7 @@
                 </div>
                 <div class="form-row mt-4" class="d-flex justify-content-center align-items-center vh-100">
                   <div class="col-md-6">
-                    <button type="button" class="btn btn-primary" (click)="addItem()">Ajouter</button>
+                    <button type="button" class="btn btn-primary" (click)="addBank()">Ajouter</button>
                   </div>
                 </div>
               </div>
@@ -408,7 +408,7 @@
                       <td><span>{{ item.adressebanque }}</span></td>
                       <td><span>{{ item.code }}</span></td>
                       <td><span>{{ item.numCompte }}</span></td>
-                      <td><button type="button" class="btn btn-primary add-button" (click)="removeItem(item)">Supprimer</button></td>
+                      <td><button type="button" class="btn btn-primary add-button" (click)="removeBank(item)">Supprimer</button></td>
                     </tr>
                   </tbody>
                 </table>

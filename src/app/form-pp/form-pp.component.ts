@@ -29,7 +29,7 @@ export class FormPpComponent implements OnInit {
  
 
   
-  public addItem(): void {
+  public addBank(): void {
     // Get the step3 form group
     const step3Group = this.Enregistrer.get('step3') as FormGroup;
   
@@ -41,7 +41,7 @@ export class FormPpComponent implements OnInit {
   }
   
 
-  public removeItem(element: any): void {
+  public removeBank(element: any): void {
     const index = this.listData.indexOf(element);
     if (index !== -1) {
       this.listData.splice(index, 1);
