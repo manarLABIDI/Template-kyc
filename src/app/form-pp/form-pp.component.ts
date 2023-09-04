@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router  } from '@angular/router';
 import { NgSignaturePadOptions,SignaturePadComponent } from '@almothafar/angular-signature-pad/public-api';
-import {PointGroup} from 'signature_pad'
+import {PointGroup} from 'signature_pad';
+import { FormPPServiceService } from '../service/form-pp-service.service';
+
 
 
 
@@ -15,7 +17,7 @@ export class FormPpComponent implements OnInit {
 
   showFirstStep: boolean = false;
 
-  constructor(private formBuilder: FormBuilder , private router: Router) {
+  constructor(private formBuilder: FormBuilder,  private router: Router, private _formService: FormPPServiceService) {
     this.listData = [];
   }
   
@@ -33,10 +35,9 @@ export class FormPpComponent implements OnInit {
     // Get the step3 form group
     const step3Group = this.Enregistrer.get('step3') as FormGroup;
   
-    // Add the step3 form group's value to the listData array
+    
     this.listData.push(step3Group.value);
   
-    // Optionally, you can clear the form fields if needed
     step3Group.reset();
   }
   
@@ -141,7 +142,7 @@ export class FormPpComponent implements OnInit {
   }
 
   
-  HandleSubmit() {
+  /*HandleSubmit() {
     if (this.Enregistrer.valid) {
       console.log(this.Enregistrer.value);
   
@@ -159,7 +160,27 @@ export class FormPpComponent implements OnInit {
   
       
     }
+  }*/ 
+  HandleSubmit() {
+    if (this.Enregistrer.valid) {
+      console.log(this.Enregistrer.value);
+  
+      // Call a method from your service to handle the submission
+      this._formService.submitForm(this.Enregistrer.value).subscribe(
+        (response) => {
+          console.log('Form submitted successfully');
+          // Optionally, you can navigate to a different page or perform other actions upon success.
+        },
+        (error) => {
+          console.error('Form submission failed', error);
+          // Handle the error, show a message, etc.
+        }
+      );
+  
+      this.Enregistrer.reset();
+    }
   }
+  
 
   
   isDrawn=false;

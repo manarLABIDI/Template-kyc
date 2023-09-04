@@ -1,47 +1,46 @@
 .form-check-input {
-    position: absolute; /* Position the checkboxes relatively to their container */
-    top: 5px; /* Adjust this value to control the vertical position */
-    left: 25px;
+  position: absolute; /* Position the checkboxes relatively to their container */
+  top: 5px; /* Adjust this value to control the vertical position */
+  left: 25px;
 }
 .card-subtitle {
-    font-size: 1.2rem; /* Adjust the font size as needed */
-    font-weight: bold;
-    margin-bottom: 0.5rem; /* Add some spacing below the label */
-    color: #333; /* Set the desired text color */
-  }
+  font-size: 1.2rem; /* Adjust the font size as needed */
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* Add some spacing below the label */
+  color: #333; /* Set the desired text color */
+}
 
-  .custom-next-button {
-    background-color: #FF8C00; /* Set the desired background color */
-    color: white; /* Set the text color to contrast with the background */
-    border: none; /* Remove the border */
-    margin-right: 8px; /* Add spacing to the right for separation */
-  }
-  .custom-previous-button {
-    background-color: #00008B !important; /* Set the background color to dark blue */
-    color: white !important; /* Set the text color to white */
-    margin-right: 8px; /* Add spacing to the right for separation */
-  }
+.custom-next-button {
+  background-color: #FF8C00; /* Set the desired background color */
+  color: white; /* Set the text color to contrast with the background */
+  border: none; /* Remove the border */
+  margin-right: 8px; /* Add spacing to the right for separation */
+}
+.custom-previous-button {
+  background-color: #00008B !important; /* Set the background color to dark blue */
+  color: white !important; /* Set the text color to white */
+  margin-right: 8px; /* Add spacing to the right for separation */
+}
 
-  .add-button {
-    background-color: #00008B !important; /* Set the background color to dark blue */
-    color: white !important; /* Set the text color to white */
-    margin-right: 8px; 
+.add-button {
+  background-color: #00008B !important; /* Set the background color to dark blue */
+  color: white !important; /* Set the text color to white */
+  margin-right: 8px; 
 }
 
 /* form-pp.component.css */
 .custom-delete-button {
-    background-color: red; /* Customize the background color */
-    color: white; /* Customize the text color */
-    border: none; /* Remove border */
-    padding: 5px 10px; /* Add padding */
-    border-radius: 4px; /* Add border radius */
-    cursor: pointer; /* Change cursor to pointer on hover */
-  }
+  background-color: red; /* Customize the background color */
+  color: white; /* Customize the text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Add padding */
+  border-radius: 4px; /* Add border radius */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
 
- 
 
-  .form-container {
-    margin-top: 80px; /* Adjust this value to provide space below the navbar */
-    padding: 20px; /* Add padding for a better layout */
-  }
-  
+
+.form-container {
+  margin-top: 80px; /* Adjust this value to provide space below the navbar */
+  padding: 20px; /* Add padding for a better layout */
+}

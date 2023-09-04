@@ -9,6 +9,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DatePipe } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 
@@ -59,7 +62,8 @@ import { FormPMComponent } from './form-pm/form-pm.component';
     MatTableModule,
     MatMenuModule,
     MatToolbarModule,
-    AngularSignaturePadModule
+    AngularSignaturePadModule,
+    HttpClientModule
     
     
   ],
