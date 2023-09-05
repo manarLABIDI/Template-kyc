@@ -66,7 +66,7 @@ export class FormPpComponent implements OnInit {
         Resident: [''],
         PaysResidence: [''],
         phone: [''],
-        doc: [''],DocumentType: [''],
+        docid: [''],DocumentType: [''],
         DateEmission: [''],LieuEmission: [''],AdresseEmail: [''],
         PPE: [''],Fonction: [''],
         PPI: [''],pays: [''],
@@ -162,7 +162,7 @@ export class FormPpComponent implements OnInit {
       
     }
   }*/ 
-  HandleSubmit() {
+  HandleSubmit(formData: any): void {
     if (this.Enregistrer.valid) {
       console.log(this.Enregistrer.value);
   

@@ -1,13 +1,28 @@
+.card-title, .card-subtitle {
+  margin-bottom: 10px;
+}
+
+
+mat-checkbox, mat-radio-button, mat-form-field {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.row {
+  margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+
+
 .form-check-input {
-  position: absolute; /* Position the checkboxes relatively to their container */
-  top: 5px; /* Adjust this value to control the vertical position */
+  position: absolute; 
+  top: 5px; 
   left: 25px;
 }
 .card-subtitle {
   font-size: 1.2rem; /* Adjust the font size as needed */
   font-weight: bold;
   margin-bottom: 0.5rem; /* Add some spacing below the label */
-  color: #333; /* Set the desired text color */
+  color: #00008B ; /* Set the desired text color */
 }
 
 .custom-next-button {
@@ -17,9 +32,9 @@
   margin-right: 8px; /* Add spacing to the right for separation */
 }
 .custom-previous-button {
-  background-color: #00008B !important; /* Set the background color to dark blue */
-  color: white !important; /* Set the text color to white */
-  margin-right: 8px; /* Add spacing to the right for separation */
+  background-color: #00008B !important; 
+  color: white !important; 
+  margin-right: 8px; 
 }
 
 .add-button {
@@ -28,19 +43,134 @@
   margin-right: 8px; 
 }
 
-/* form-pp.component.css */
+
 .custom-delete-button {
-  background-color: red; /* Customize the background color */
-  color: white; /* Customize the text color */
-  border: none; /* Remove border */
-  padding: 5px 10px; /* Add padding */
-  border-radius: 4px; /* Add border radius */
-  cursor: pointer; /* Change cursor to pointer on hover */
+  background-color: red; 
+  color: white; 
+  border: none; 
+  padding: 5px 10px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+}
+
+
+.form-container {
+  max-width: 800px;
+  /*Setamaximumwidthfortheform*/margin: 160px auto 0;
+  /*Adjustthetopmargintoprovidespaceforthenavbar*/padding: 20px;
+  /*Addsomepaddingtotheform*/background-color: #f5f5f5;
+  /*Setabackgroundcolorfortheform*/border-radius: 10px;
+  /*Addroundedcornerstotheform*/box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 
 
-.form-container {
-  margin-top: 80px; /* Adjust this value to provide space below the navbar */
-  padding: 20px; /* Add padding for a better layout */
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 15px; /* Add spacing between form fields */
+}
+
+/* Style the radio buttons */
+.mat-radio-button {
+  margin-right: 10px; /* Add spacing between radio buttons */
+}
+
+
+/* Style the step container */
+mat-step[stepControl="step3form"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+div[formGroupName="step3"] button {
+  margin: 8px;
+}
+
+/* Style the table */
+table.table-bordered {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+table.table-bordered th, table.table-bordered td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust spacing between form rows */
+}
+
+/* Style the table header background color */
+table.table thead {
+  background-color: white;  
+  color:  #00008B; 
+}
+
+
+
+
+/* Style the "Ajouter" button */
+button.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Style the "Supprimer" button */
+button.add-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+button.add-button:hover {
+  background-color: #c82333;
+}
+
+.radio-group-inline {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.documentType{  display: flex;
+  align-items: center;
+  gap: 20px; 
+
+}
+.radio-group-container {
+  text-align: center; /* Center the contents horizontally */
+  margin-bottom: 10px; /* Add spacing below the radio group */
+}
+
+.radio-group-container label {
+  display: block; /* Ensure the label takes up the full width */
+  margin-bottom: 5px; /* Add spacing below the label */
 }

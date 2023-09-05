@@ -8,9 +8,11 @@ import { Observable } from 'rxjs';
 export class FormPPServiceService {
 
   constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:8022/pp/save';
 
-  submitForm(data: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/formPP', data);
+  submitForm(formData: any): Observable<any> {
+    return this.http.post(this.apiUrl, formData);
     
   }
+  
 }
