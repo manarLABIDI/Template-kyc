@@ -22,8 +22,22 @@ mat-checkbox, mat-radio-button, mat-form-field {
   font-size: 1.2rem; /* Adjust the font size as needed */
   font-weight: bold;
   margin-bottom: 0.5rem; /* Add some spacing below the label */
-  color: #00008B ; /* Set the desired text color */
+  color: #00008B ; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Set the desired text color */
 }
+/* Add a line under the label */
+label h6 {
+  border-bottom: 2px solid black; /* You can adjust the border color and thickness as needed */
+  display: inline-block; /* Ensure the line is only as wide as the content */
+  padding-bottom: 5px; /* Adjust the spacing between the text and the line */
+  margin-bottom: 10px; /* Adjust the spacing between the label and the content below */
+}
+
+/* Your other CSS styles... */
+
 
 .custom-next-button {
   background-color: #FF8C00; /* Set the desired background color */
@@ -55,7 +69,7 @@ mat-checkbox, mat-radio-button, mat-form-field {
 
 
 .form-container {
-  max-width: 800px;
+  max-width: 900px;
   /*Setamaximumwidthfortheform*/margin: 160px auto 0;
   /*Adjustthetopmargintoprovidespaceforthenavbar*/padding: 20px;
   /*Addsomepaddingtotheform*/background-color: #f5f5f5;

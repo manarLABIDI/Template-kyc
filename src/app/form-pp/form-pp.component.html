@@ -37,7 +37,6 @@
               <mat-form-field class="w-100">
                 <mat-label>Date de Naissance</mat-label>
                 <input matInput [matDatepicker]="picker" placeholder="date de Naissance" formControlName="ddn">
-                <!-- Add a custom CSS class to the mat-datepicker-toggle -->
                 <mat-datepicker-toggle class="custom-datepicker-toggle" matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
 
@@ -98,12 +97,12 @@
           <div class="row">
             <div class="col-md-6"><mat-form-field class="w-100">
               <mat-label>Document d'identité : N°</mat-label>
-              <input matInput name="doc" id="doc" placeholder="" type="text" formControlName="doc"></mat-form-field>
+              <input matInput name="doc" id="doc" placeholder="" type="text" formControlName="docid"></mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-radio-group formControlName="DocumentType" class="documentType">
-                <mat-radio-button value="type1">Passport</mat-radio-button>
-                <mat-radio-button value="type2">CIN</mat-radio-button>
+                <mat-radio-button value="Passport">Passport</mat-radio-button>
+                <mat-radio-button value="CIN">CIN</mat-radio-button>
               </mat-radio-group>
             </div>
           </div>
@@ -121,6 +120,15 @@
               <mat-form-field class="w-100">
               <mat-label>Lieu d'émission</mat-label>
                 <input matInput placeholder="Lieu d'émission" formControlName="LieuEmission">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+              <mat-label>Date d'expiration</mat-label>
+
+                <input matInput [matDatepicker]="expirationDatePicker" placeholder="Date d'émission" formControlName="DateExpiration">
+                <mat-datepicker-toggle matSuffix [for]="expirationDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #expirationDatePicker></mat-datepicker>
               </mat-form-field>
             </div>
           </div>
@@ -169,7 +177,7 @@
               <div class="col-md-6">
               <mat-form-field class="w-100">
                 <mat-label>La Raison de l'ouverture de compte </mat-label>
-                <input matInput name="AdresseEmail" id="AdresseEmail" placeholder="" type="email" formControlName="raison">
+                <input matInput name="raisonOuverture" id="raisonOuverture" placeholder="La Raison de l'ouverture de compte" type="text" formControlName="raison">
               </mat-form-field>
             </div >
             </div>
@@ -183,7 +191,7 @@
                 
                   <mat-radio-group formControlName="AgentType" color="primary" class="radio-group-inline">
                     <mat-radio-button value="Retraité">Retraité</mat-radio-button>
-                    <mat-radio-button value="Profession libérale">Profession libérale</mat-radio-button>
+                    <mat-radio-button value="Profession_libérale">Profession libérale</mat-radio-button>
                     <mat-radio-button value="Salarié">Salarié</mat-radio-button>
                   </mat-radio-group>
                 
@@ -259,7 +267,7 @@
                   </mat-radio-group>
                 </div>
                 <div>
-                <label class="card-subtitle">Opération crédit:</label></div>
+                <label><h6>Opération crédit:</h6></label></div>
                 <!-- Place checkboxes outside the mat-form-field -->
                 <div>
                 <mat-label>Type :</mat-label>
@@ -294,7 +302,7 @@
               </div>
                 
               <div>
-                <label class="card-subtitle">Opération débit:</label></div>
+                <label ><h6>Opération débit:</h6></label></div>
                 <!-- Place checkboxes outside the mat-form-field -->
                 <div>
                 <mat-label>Type :</mat-label>
@@ -328,7 +336,7 @@
                 </div>
               </div>
               <div>
-                <label class="card-subtitle">Source d’alimentation du compte:</label></div>
+                <label ><h6>Source d’alimentation du compte:</h6></label></div>
                 <!-- Place checkboxes outside the mat-form-field -->
                 <div>
                 <mat-label>Type :</mat-label>
@@ -343,6 +351,135 @@
                   <input matInput placeholder="Autre moyen de Paiement" formControlName="autreSourceText">
                 </mat-form-field>
                 </div>
+                <div>
+                  <label class="card-subtitle">Informations sur le ou les bénéficiaires effectifs</label>
+                  <br><br>
+                      <div class="position-relative mb-3">
+                        <label class="card-title">Bénéficiaire effectif du compte : Titulaire du compte</label>
+                        <mat-radio-group formControlName="isBeneficaire" color="primary">
+                          <mat-radio-button value="estbenificaire">Oui</mat-radio-button>
+                          <mat-radio-button value="nonbenificaire ">Non</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                    
+                    <div *ngIf="Enregistrer.get('step2.isBeneficaire')?.value === 'estbenificaire'">
+                      <div class="position-relative mb-3">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <input matInput placeholder="Nom" formControlName="lastnameBeneficaire">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <input matInput placeholder="Prénom" formControlName="firstnameBeneficaire">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="w-100">
+                            <mat-label>Date de Naissance</mat-label>
+                            <input matInput [matDatepicker]="myDatepicker1" placeholder="Date de Naissance" formControlName="ddnBeneficaire">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker1></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="w-100">
+                        <mat-label>Document d'identité : N°</mat-label>
+                        <input matInput name="doc" id="doc" placeholder="Document d'identité : N°" type="text" formControlName="docIdBeneficaire"></mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-radio-group formControlName="DocumentTypeBeneficaire" class="documentType">
+                          <mat-radio-button value="Passport">Passport</mat-radio-button>
+                          <mat-radio-button value="CIN">CIN</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="w-100">
+                            <mat-label>Date d'émission</mat-label>
+                            <input matInput [matDatepicker]="myDatepicker2" placeholder="Date d'émission" formControlName="DateEmissionBeneficaire">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker2></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <mat-label>Lieu d'émission</mat-label>
+                              <input matInput name="LieuEmission" id="LieuEmission" placeholder="Lieu d'émission" type="text" formControlName="LieuEmissionBeneficaire">
+                            </mat-form-field>
+                          </div>
+                          
+                        
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <mat-label>Date d'expiration</mat-label>
+                              <input matInput [matDatepicker]="myDatepicker3" placeholder="Date d'expiration" formControlName="DateExpirationBeneficaire">
+                              <mat-datepicker-toggle matSuffix [for]="myDatepicker3"></mat-datepicker-toggle>
+                              <mat-datepicker #myDatepicker3></mat-datepicker>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                    
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="w-100">
+                            <mat-label>Nationalité</mat-label>
+                            <input matInput name="Nationalite" id="Nationalite" placeholder="" type="text" formControlName="NationaliteBeneficaire">
+                          </mat-form-field>
+                        </div>
+                        
+                      </div>
+
+                      <div class="position-relative mb-3">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label class="card-title">Residence:</label>
+                          </div>
+                          <div>
+                            <mat-radio-group formControlName="ResidentBeneficaire" color="primary">
+                              <mat-radio-button value="Resident">Résident</mat-radio-button>
+                              <mat-radio-button value="NonResident">Non Résident</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="position-relative mb-3 custom-form-row">
+                              <mat-form-field class="w-100">
+                                <input matInput name="PaysResidence" id="PaysResidence" placeholder="Pays de Résidence " type="text" formControlName="PaysResidenceBeneficaire">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label class="card-title">Personnalité publique PPE:</label>
+                          <mat-radio-group formControlName="PPEBeneficaire" color="primary">
+                            <mat-radio-button value="Non">Non</mat-radio-button>
+                            <mat-radio-button value="Oui">Oui</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                        <div class="col-md-6" *ngIf="Enregistrer.get('step2.PPEBeneficaire')?.value === 'Oui'">
+          
+                          <mat-form-field>
+                            <mat-label>Fonction</mat-label>
+                            <input matInput name="Fonction" id="Fonction" placeholder="" type="text" formControlName="FonctionBeneficaire">
+                          </mat-form-field>
+                        </div>
+                      </div><br>
+                    
+                    </div>
+                    
           
           
             <div>
@@ -419,6 +556,8 @@
               </tbody>
             </table>
           </div>
+
+
           <div>
             <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
             <button mat-button matStepperNext class="btn btn-warning custom-next-button">Suivant</button>
@@ -427,15 +566,10 @@
       </mat-step>
       
 
-  <!-- ... Other steps ... -->
+  <!-- ... STEP4 ... -->
 
-      
-      
-    
-    
-    
-    
-    <!--STEP4-->
+
+  
     <mat-step [stepControl]="step4form">
       <div formGroupName="step4">
         <ng-template matStepLabel>Engagement</ng-template>

@@ -67,7 +67,7 @@ export class FormPpComponent implements OnInit {
         PaysResidence: [''],
         phone: [''],
         docid: [''],DocumentType: [''],
-        DateEmission: [''],LieuEmission: [''],AdresseEmail: [''],
+        DateEmission: [''],LieuEmission: [''],AdresseEmail: [''],DateExpiration: [''],
         PPE: [''],Fonction: [''],
         PPI: [''],pays: [''],
         raison: [''],
@@ -99,11 +99,22 @@ export class FormPpComponent implements OnInit {
         ProduitInvestissement: [''],
         autresource: [''],
         autreSourceText: [''],
-        
-        
+        isBeneficaire: [''],
+        lastnameBeneficaire: [''], firstnameBeneficaire: [''],
+        docIdBeneficaire: [''],
+        ddnBeneficaire: [''],
+        DocumentTypeBeneficaire: [''],
+        DateEmissionBeneficaire: [''],
+        LieuEmissionBeneficaire: [''],
+        DateExpirationBeneficaire: [''],
+        NationaliteBeneficaire: [''],
+        ResidentBeneficaire: [''],
+        PaysResidenceBeneficaire: [''],
+        PPEBeneficaire: [''],
+        FonctionBeneficaire: [''],
       }),
       step3: this.formBuilder.group({
-        banque: [''], // Make sure this corresponds to the name used in the template
+        banque: [''],
         adressebanque: [''],
         code: [''],
         numCompte: [''],
@@ -141,6 +152,7 @@ export class FormPpComponent implements OnInit {
   get step4form(){
     return this.Enregistrer.get("step4") as FormGroup;
   }
+  
 
   
   /*HandleSubmit() {
@@ -166,21 +178,21 @@ export class FormPpComponent implements OnInit {
     if (this.Enregistrer.valid) {
       console.log(this.Enregistrer.value);
   
-      // Call a method from your service to handle the submission
+      
       this._formService.submitForm(this.Enregistrer.value).subscribe(
         (response) => {
           console.log('Form submitted successfully');
           this.signaturePad.clear();
           this._snackBar.open('formulaire ajouté avec succès', 'Close', {
-            duration: 3000, // Duration of the message in milliseconds
+            duration: 3000,
           }).afterDismissed().subscribe(() => {
-            // Redirect to the home page after the alert is closed
+           
             this.router.navigate(['/']);
           });
         },
         (error) => {
           console.error('Form submission failed', error);
-          // Handle the error, show a message, etc.
+          
         }
       );
   
