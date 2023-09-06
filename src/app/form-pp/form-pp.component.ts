@@ -182,7 +182,7 @@ export class FormPpComponent implements OnInit {
       this._formService.submitForm(this.Enregistrer.value).subscribe(
         (response) => {
           console.log('Form submitted successfully');
-          this.signaturePad.clear();
+          
           this._snackBar.open('formulaire ajouté avec succès', 'Close', {
             duration: 3000,
           }).afterDismissed().subscribe(() => {
@@ -210,110 +210,4 @@ export class FormPpComponent implements OnInit {
   
 
   
-  isDrawn=false;
-  private history:PointGroup[]=[];
-  private future:PointGroup[]=[];
-  @ViewChild('signature')
-  public signaturePad!:SignaturePadComponent;
-  public signaturePadOption:NgSignaturePadOptions={
-    minWidth:1,
-    canvasWidth:300,
-    canvasHeight:150,
-    penColor:'black',
-    backgroundColor:'white',
-    dotSize:1,
-    maxWidth:1,
-    velocityFilterWeight:1
-  };
-
-  drawComplete(event: MouseEvent | Touch) {
-    // will be notified of szimek/signature_pad's onEnd event
-    console.log('Completed drawing', event);
-    console.log(this.signaturePad.toDataURL());
-    this.isDrawn=true;
-  };
-
-  drawStart(event: MouseEvent | Touch) {
-    // will be notified of szimek/signature_pad's onBegin event
-    console.log('Start drawing', event);
-
-  };
-
-  clear(){
-    this.history=[];
-    this.future=[];
-    this.signaturePad.clear();
-  }
-  redo(){
-    if(this.history.length>=0 && this.future.length>0){
-      var data = this.signaturePad.toData();
-      if(data||data==undefined){
-        const adddata:any=this.future.pop();
-        data.push(adddata);
-      
-      }
-      this.signaturePad.fromData(data);
-    }
-  }
-  undo(){
-    var data = this.signaturePad.toData();
-    if(data||data==undefined){
-      const lastStrock:any = this.history.pop();
-      const removedStrock:any =data.pop();
-      this.future.push(removedStrock);
-      this.signaturePad.fromData(data);   
-  }}
-  savePNG(){
-    if (this.signaturePad.isEmpty()){
-      return alert("please provide a signature first!")
-    }
-    const data = this.signaturePad.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href=data;
-    link.download='signature.png';
-    link.click();
-
-  }
-  saveJPEG(){
-    if (this.signaturePad.isEmpty()){
-      return alert("please provide a signature first!")
-    }
-    const data = this.signaturePad.toDataURL('image/jpeg');
-    const link = document.createElement('a');
-    link.href=data;
-    link.download='signature.jpeg';
-    link.click();
-    
-  }
-  saveSVG(){
-    if (this.signaturePad.isEmpty()){
-      return alert("please provide a signature first!")
-    }
-    const data = this.signaturePad.toDataURL('image/svg');
-    const link = document.createElement('a');
-    link.href=data;
-    link.download='signature.svg';
-    link.click();
-    
-  }
-
-  preDefinedSignatureData:PointGroup[]=[]
-  ngAfterViewInit(){
-    this.signaturePad.set('minwidth',5);
-    this.signaturePad.fromData(this.preDefinedSignatureData);
-    const canvas = this.signaturePad.getCanvas();
-    if (canvas){
-      const ctx=canvas.getContext('2d');
-      if (ctx){
-        const text ="Signature ______________________________";
-        const x=20;
-        const y=canvas.height-40;
-        ctx.font="16px Arial";
-        ctx.fillStyle="black";
-        ctx.fillText(text,x,y);
-
-
-      }
-        
-    }}
 }  

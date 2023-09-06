@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,16 @@ import { Observable } from 'rxjs';
 export class FormPPServiceService {
 
   constructor(private http: HttpClient) {}
-  //private apiUrl = 'http://localhost:8022/pp/save';
 
   submitForm(formData: any): Observable<any> {
-    return this.http.post('http://localhost:3000/formPP', formData);
-    
+    return this.http.post('http://localhost:8022/api/formpp', formData)
+      .pipe(
+        catchError((error: any) => {
+          // Handle the error here
+          console.error('An error occurred:', error);
+          // You can also re-throw the error to propagate it to the calling component
+          return throwError(error);
+        })
+      );
   }
-  
 }

@@ -79,7 +79,84 @@
         "nomPrenomAgent": "labidi manar"
       },
       "id": 1
+    },
+    {
+      "step1": {
+        "firstname": "manar",
+        "lastname": "labidi",
+        "ddn": "",
+        "Nationalite": "",
+        "AdressePersonnelle": "",
+        "AdresseCourrier": "",
+        "Resident": "",
+        "PaysResidence": "",
+        "phone": "",
+        "docid": "",
+        "DocumentType": "",
+        "DateEmission": "",
+        "LieuEmission": "",
+        "AdresseEmail": "",
+        "DateExpiration": "",
+        "PPE": "",
+        "Fonction": "",
+        "PPI": "Non",
+        "pays": "",
+        "raison": "",
+        "AgentType": "SALARIE",
+        "employeur": "",
+        "adressePro": "",
+        "telFaxPro": "",
+        "emailPro": "",
+        "typeActivite": "",
+        "zoneActivite": ""
+      },
+      "step2": {
+        "comptePaiement": "Niveau 1",
+        "virementInterne": "",
+        "virementBancaire": true,
+        "autreMoyenPaiement": "",
+        "autreMoyenPaiementText": "",
+        "montantsJournaliers": "",
+        "montantsHebdomadaires": "",
+        "montantsMensuels": "",
+        "cash": "",
+        "virementdebit": "",
+        "autreMoyendebit": "",
+        "autreMoyendebitText": "",
+        "montantsJournaliersdebit": "",
+        "montantsHebdomadairesdebit": "",
+        "montantsMensuelsdebit": "",
+        "virementespeces": "",
+        "RevenusPro": "",
+        "ProduitInvestissement": "",
+        "autresource": "",
+        "autreSourceText": "",
+        "isBeneficaire": "",
+        "lastnameBeneficaire": "",
+        "firstnameBeneficaire": "",
+        "docIdBeneficaire": "",
+        "ddnBeneficaire": "",
+        "DocumentTypeBeneficaire": "",
+        "DateEmissionBeneficaire": "",
+        "LieuEmissionBeneficaire": "",
+        "DateExpirationBeneficaire": "",
+        "NationaliteBeneficaire": "",
+        "isResidentBeneficaire": "",
+        "PaysResidenceBeneficaire": "",
+        "PPEBeneficaire": "",
+        "FonctionBeneficaire": ""
+      },
+      "step3": {
+        "banque": null,
+        "adressebanque": null,
+        "code": null,
+        "numCompte": null
+      },
+      "step4": {
+        "certification": true,
+        "nomPrenomAgent": "MANAR LABIDI"
+      },
+      "id": 2
     }
-   
   ]
 }
