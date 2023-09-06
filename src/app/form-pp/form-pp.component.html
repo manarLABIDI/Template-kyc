@@ -358,12 +358,13 @@
                         <label class="card-title">Bénéficiaire effectif du compte : Titulaire du compte</label>
                         <mat-radio-group formControlName="isBeneficaire" color="primary">
                           <mat-radio-button value="estbenificaire">Oui</mat-radio-button>
-                          <mat-radio-button value="nonbenificaire ">Non</mat-radio-button>
+                          <mat-radio-button value="nonbenificaire">Non</mat-radio-button>
+
                         </mat-radio-group>
                       </div>
                     </div>
                     
-                    <div *ngIf="Enregistrer.get('step2.isBeneficaire')?.value === 'estbenificaire'">
+                    <div *ngIf="Enregistrer.get('step2.isBeneficaire')?.value === 'nonbenificaire'">
                       <div class="position-relative mb-3">
                         <div class="row">
                           <div class="col-md-6">
