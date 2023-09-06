@@ -190,9 +190,9 @@
                 </div>
                 
                   <mat-radio-group formControlName="AgentType" color="primary" class="radio-group-inline">
-                    <mat-radio-button value="Retraité">Retraité</mat-radio-button>
-                    <mat-radio-button value="Profession_libérale">Profession libérale</mat-radio-button>
-                    <mat-radio-button value="Salarié">Salarié</mat-radio-button>
+                    <mat-radio-button value="RETRAITE">Retraité</mat-radio-button>
+                    <mat-radio-button value="PROFESSION_LIBERALE">Profession libérale</mat-radio-button>
+                    <mat-radio-button value="SALARIE">Salarié</mat-radio-button>
                   </mat-radio-group>
                 
 
@@ -446,7 +446,7 @@
                             <label class="card-title">Residence:</label>
                           </div>
                           <div>
-                            <mat-radio-group formControlName="ResidentBeneficaire" color="primary">
+                            <mat-radio-group formControlName="isResidentBeneficaire" color="primary">
                               <mat-radio-button value="Resident">Résident</mat-radio-button>
                               <mat-radio-button value="NonResident">Non Résident</mat-radio-button>
                             </mat-radio-group>
@@ -580,7 +580,7 @@
         </p>
         <div>
           <mat-form-field>
-          <mat-label>Nom et Prénom Agent de paiement</mat-label>
+          <mat-label>Nom et Prénom de l'Agent </mat-label>
           <input matInput placeholder="Nom et Prénom" formControlName="nomPrenomAgent" >
         </mat-form-field>
       </div>
@@ -591,15 +591,7 @@
           <mat-datepicker #datePicker></mat-datepicker>
         </mat-form-field>
         </div>
-        <div >
-          <mat-label>Signature</mat-label>
-          <signature-pad
-            #signature
-            [options]="signaturePadOption"
-            (drawStart)="drawStart($event)"
-            (drawEnd)="drawComplete($event)"
-          ></signature-pad>
-        </div>
+       
         <div>
           <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
           <button mat-raised-button class="btn btn-warning custom-next-button" >Enregistrer</button>

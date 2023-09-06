@@ -108,7 +108,7 @@ export class FormPpComponent implements OnInit {
         LieuEmissionBeneficaire: [''],
         DateExpirationBeneficaire: [''],
         NationaliteBeneficaire: [''],
-        ResidentBeneficaire: [''],
+        isResidentBeneficaire: [''],
         PaysResidenceBeneficaire: [''],
         PPEBeneficaire: [''],
         FonctionBeneficaire: [''],
