@@ -1,0 +1,612 @@
+
+<div class="form-container">
+  
+
+  <form [formGroup]="Enregistrer" (ngSubmit)="HandleSubmit(Enregistrer.value)">
+    <mat-horizontal-stepper labelPosition="bottom"  [linear]="isLinear" #stepper class="stepper-container">
+      <!--STEP1-->
+      <mat-step [stepControl]="step1form">
+        <div formGroupName="step1">
+
+          <ng-template matStepLabel>Informations personnelles</ng-template>
+          <div class="position-relative mb-3">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  
+                  <input matInput placeholder=" Nom" formControlName="firstName">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                
+                  <input matInput placeholder=" Prénom" formControlName="lastName">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label>Nationalité</mat-label>
+                <input matInput name="nationalite" id="nationalite" placeholder="" type="text" formControlName="nationalite">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label>Date de Naissance</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="date de Naissance" formControlName="ddn">
+                <mat-datepicker-toggle class="custom-datepicker-toggle" matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label>Adresse Personnelle</mat-label>
+                <input matInput name="adressePersonnelle" id="adressePersonnelle" placeholder="" type="text" formControlName="adressePersonnelle">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label>Adresse du Courrier</mat-label>
+                <input matInput name="adresseCourrier" id="adresseCourrier" placeholder=" " type="text" formControlName="adresseCourrier">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <br>
+          <div class="position-relative mb-3">
+            <div class="row">
+            
+              <div class="col-md-6">
+                <label class="card-title">Etat de Residence:</label>
+              </div>
+              <div>
+                <mat-radio-group formControlName="resident" color="primary">
+                    <mat-radio-button value="true">Résident</mat-radio-button>
+                    <mat-radio-button value="false">Non Résident</mat-radio-button>
+                </mat-radio-group>
+            
+            </div>
+              <div class="col-md-6">
+                <div class="position-relative mb-3 custom-form-row">
+                  <mat-form-field class="w-100">
+                    
+                    <input matInput name="paysResidence" id="paysResidence" placeholder="Pays de Résidence " type="text" formControlName="paysResidence">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+                
+                <input matInput name="phone" id="phone" placeholder="Téléphone" type="tel" formControlName="phone">
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6"><mat-form-field class="w-100">
+              <mat-label>Document d'identité : N°</mat-label>
+              <input matInput name="doc" id="doc" placeholder="" type="text" formControlName="docid"></mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-radio-group formControlName="documentType" class="documentType">
+                <mat-radio-button value="PASSPORT">Passport</mat-radio-button>
+                <mat-radio-button value="CIN">CIN</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+              <mat-label>Date d'émission</mat-label>
+
+                <input matInput [matDatepicker]="emissionDatePicker" placeholder="Date d'émission" formControlName="dateEmission">
+                <mat-datepicker-toggle matSuffix [for]="emissionDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #emissionDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+              <mat-label>Lieu d'émission</mat-label>
+                <input matInput placeholder="Lieu d'émission" formControlName="lieuEmission">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w-100">
+              <mat-label>Date d'expiration</mat-label>
+
+                <input matInput [matDatepicker]="expirationDatePicker" placeholder="Date d'émission" formControlName="dateExpiration">
+                <mat-datepicker-toggle matSuffix [for]="expirationDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #expirationDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div >
+              <mat-form-field class="w-100">
+                <mat-label>Adresse e-mail</mat-label>
+                <input matInput name="adresseEmail" id="adresseEmail" placeholder="" type="email" formControlName="adresseEmail">
+              </mat-form-field>
+            </div >
+            <div class="row">
+              <div class="col-md-6">
+                <label class="card-title">Personnalité publique PPE:</label>
+                <mat-radio-group formControlName="PPE" color="primary">
+                  <mat-radio-button value="false">Non</mat-radio-button>
+                  <mat-radio-button value="true">Oui</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="col-md-6" *ngIf="Enregistrer.get('step1.PPE')?.value === 'true'">
+
+                <mat-form-field>
+                  <mat-label>Fonction</mat-label>
+                  <input matInput name="fonction" id="fonction" placeholder="" type="text" formControlName="fonction">
+                </mat-form-field>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="radio-group-container">
+                  <label>Est-ce qu'un membre de votre famille a occupé ou occupe un poste public important?</label>
+                  <mat-radio-group formControlName="PPI" color="primary">
+                    <mat-radio-button value="false">Non</mat-radio-button>
+                    <mat-radio-button value="true">Oui</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              
+              <div class="col-md-6" *ngIf="Enregistrer.get('step1.PPI')?.value === 'true'">
+
+                <mat-form-field>
+                  <mat-label>Pays</mat-label>
+                  <input matInput name="pays" id="pays" pays="" type="text" formControlName="pays">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+              <mat-form-field class="w-100">
+                <mat-label>La Raison de l'ouverture de compte </mat-label>
+                <input matInput name="raisonOuverture" id="raisonOuverture" placeholder="La Raison de l'ouverture de compte" type="text" formControlName="raison">
+              </mat-form-field>
+            </div >
+            </div>
+            <br><br>
+            <label class="card-subtitle">Catégorie socioprofessionnelle</label><br><br>
+            <div class="row">
+              <div class="form-row">
+                <div style="margin-left: 20px;">
+                  <label class="card-title">L'Agent est :</label>
+                </div>
+                
+                  <mat-radio-group formControlName="agentType" color="primary" class="radio-group-inline">
+                    <mat-radio-button value="RETRAITE">Retraité</mat-radio-button>
+                    <mat-radio-button value="PROFESSION_LIBERALE">Profession libérale</mat-radio-button>
+                    <mat-radio-button value="SALARIE">Salarié</mat-radio-button>
+                  </mat-radio-group>
+                
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <mat-label>Nom ou raison sociale de l’employeur</mat-label>
+                  <input matInput name="employeur" id="employeur" placeholder="" type="text" formControlName="employeur">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <mat-label>Adresse professionnelle</mat-label>
+                  <input matInput name="adressePro" id="adressePro" placeholder="" type="text" formControlName="adressePro">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <mat-label>Tél/fax professionnel</mat-label>
+                  <input matInput name="telFaxPro" id="telFaxPro" placeholder="" type="tel" formControlName="telFaxPro">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <mat-label>Email /web site :</mat-label>
+                  <input matInput name="emailPro" id="emailPro" placeholder="" type="text" formControlName="emailPro">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <mat-label>Type d’activité</mat-label>
+                  <input matInput name="typeActivite" id="typeActivite" placeholder="" type="text" formControlName="typeActivite">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w-100">
+                  <mat-label>Zone géographique d’activité</mat-label>
+                  <input matInput name="zoneActivite" id="zoneActivite" placeholder="" type="text" formControlName="zoneActivite">
+                </mat-form-field>
+              </div>
+            </div>
+            
+            
+            
+            
+        
+          <div>
+            <button mat-raised-button matStepperNext class="btn btn-warning custom-next-button">suivant</button>
+          </div>
+        </div>
+      </mat-step>
+
+      <!-- STEP2 -->
+
+      <mat-step [stepControl]="step2form">
+        <div formGroupName="step2">
+                <ng-template matStepLabel>Compte de paiement</ng-template>
+                <div class="position-relative mb-3">
+                  <label class="card-title">Désigne un compte de paiement:</label>
+                  <mat-radio-group formControlName="comptePaiement" color="primary">
+                    <mat-radio-button value="Niveau 1">Niveau 1</mat-radio-button>
+                    <mat-radio-button value="Niveau 2">Niveau 2</mat-radio-button>
+                    <mat-radio-button value="Niveau 3">Niveau 3</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div>
+                <label><h6>Opération crédit:</h6></label></div>
+                <!-- Place checkboxes outside the mat-form-field -->
+                <div>
+                <mat-label>Type :</mat-label>
+                <mat-checkbox formControlName="virementInterne">Virement interne</mat-checkbox>
+                <mat-checkbox formControlName="virementBancaire">Virement bancaire/ postaux</mat-checkbox>
+                <mat-checkbox formControlName="autreMoyenPaiement">Autre moyen de Paiement</mat-checkbox>
+            
+                <mat-form-field *ngIf="Enregistrer.get('step2.autreMoyenPaiement')?.value" class="w-100">
+                  <mat-label>Autre moyen de Paiement :</mat-label>
+                  <input matInput placeholder="Autre moyen de Paiement" formControlName="autreMoyenPaiementText">
+                </mat-form-field>
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="w-100">
+                      <mat-label>Montants moyens journaliers :</mat-label>
+                      <input matInput placeholder="Montants moyens journaliers" formControlName="montantsJournaliers">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="w-100">
+                      <mat-label>Montants moyens hebdomadaires :</mat-label>
+                      <input matInput placeholder="Montants moyens hebdomadaires" formControlName="montantsHebdomadaires">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="w-100">
+                      <mat-label>Montants moyens mensuels :</mat-label>
+                      <input matInput placeholder="Montants moyens mensuels" formControlName="montantsMensuels">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+                
+              <div>
+                <label ><h6>Opération débit:</h6></label></div>
+                <!-- Place checkboxes outside the mat-form-field -->
+                <div>
+                <mat-label>Type :</mat-label>
+                <mat-checkbox formControlName="cash">Cash</mat-checkbox>
+                <mat-checkbox formControlName="virementdebit">Virement </mat-checkbox>
+                <mat-checkbox formControlName="autreMoyendebit">Autre </mat-checkbox>
+            
+                <mat-form-field *ngIf="Enregistrer.get('step2.autreMoyendebit')?.value" class="w-100">
+                  <mat-label>Autre moyen :</mat-label>
+                  <input matInput placeholder="Autre moyen de Paiement" formControlName="autreMoyendebitText">
+                </mat-form-field>
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="w-100">
+                      <mat-label>Montants moyens journaliers :</mat-label>
+                      <input matInput placeholder="Montants moyens journaliers" formControlName="montantsJournaliersdebit">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="w-100">
+                      <mat-label>Montants moyens hebdomadaires :</mat-label>
+                      <input matInput placeholder="Montants moyens hebdomadaires" formControlName="montantsHebdomadairesdebit">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="w-100">
+                      <mat-label>Montants moyens mensuels :</mat-label>
+                      <input matInput placeholder="Montants moyens mensuels" formControlName="montantsMensuelsdebit">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label ><h6>Source d’alimentation du compte:</h6></label></div>
+                <!-- Place checkboxes outside the mat-form-field -->
+                <div>
+                <mat-label>Type :</mat-label>
+                <mat-checkbox formControlName="virementespeces">Versement en espèces</mat-checkbox>
+                <mat-checkbox formControlName="revenusPro">Revenus professionnels</mat-checkbox>
+                <mat-checkbox formControlName="produitInvestissement">Produit d'investissement</mat-checkbox>
+                <div style="margin-left: 42px;">
+                  <mat-checkbox formControlName="autresource">Autre</mat-checkbox></div>
+            
+                <mat-form-field *ngIf="Enregistrer.get('step2.autresource')?.value" class="w-100">
+                  <mat-label>Autre moyen de Paiement :</mat-label>
+                  <input matInput placeholder="Autre moyen de Paiement" formControlName="autreSourceText">
+                </mat-form-field>
+                </div>
+                <div>
+                  <label class="card-subtitle">Informations sur le ou les bénéficiaires effectifs</label>
+                  <br><br>
+                      <div class="position-relative mb-3">
+                        <label class="card-title">Bénéficiaire effectif du compte : Titulaire du compte</label>
+                        <mat-radio-group formControlName="isBeneficaire" color="primary">
+                          <mat-radio-button value="true">Oui</mat-radio-button>
+                          <mat-radio-button value="false">Non</mat-radio-button>
+
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                    
+                    <div *ngIf="Enregistrer.get('step2.isBeneficaire')?.value === 'false'">
+                      <div class="position-relative mb-3">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <input matInput placeholder="Nom" formControlName="lastNameBeneficaire">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <input matInput placeholder="Prénom" formControlName="firstNameBeneficaire">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="w-100">
+                            <mat-label>Date de Naissance</mat-label>
+                            <input matInput [matDatepicker]="myDatepicker1" placeholder="Date de Naissance" formControlName="ddnBeneficaire">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker1></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <mat-form-field class="w-100">
+                        <mat-label>Document d'identité : N°</mat-label>
+                        <input matInput name="doc" id="doc" placeholder="Document d'identité : N°" type="text" formControlName="docIdBeneficaire"></mat-form-field>
+                      </div>
+                      <div class="col-md-6">
+                        <mat-radio-group formControlName="documentTypeBeneficaire" class="documentType">
+                          <mat-radio-button value="PASSPORT">Passport</mat-radio-button>
+                          <mat-radio-button value="CIN">CIN</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="w-100">
+                            <mat-label>Date d'émission</mat-label>
+                            <input matInput [matDatepicker]="myDatepicker2" placeholder="Date d'émission" formControlName="dateEmissionBeneficaire">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker2></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <mat-label>Lieu d'émission</mat-label>
+                              <input matInput name="lieuEmission" id="lieuEmission" placeholder="Lieu d'émission" type="text" formControlName="lieuEmissionBeneficaire">
+                            </mat-form-field>
+                          </div>
+                          
+                        
+                          <div class="col-md-6">
+                            <mat-form-field class="w-100">
+                              <mat-label>Date d'expiration</mat-label>
+                              <input matInput [matDatepicker]="myDatepicker3" placeholder="Date d'expiration" formControlName="dateExpirationBeneficaire">
+                              <mat-datepicker-toggle matSuffix [for]="myDatepicker3"></mat-datepicker-toggle>
+                              <mat-datepicker #myDatepicker3></mat-datepicker>
+                            </mat-form-field>
+                          </div>
+                      </div>
+                    
+                      <div class="row">
+                        <div class="col-md-6">
+                          <mat-form-field class="w-100">
+                            <mat-label>Nationalité</mat-label>
+                            <input matInput name="nationalite" id="nationalite" placeholder="" type="text" formControlName="nationaliteBeneficaire">
+                          </mat-form-field>
+                        </div>
+                        
+                      </div>
+
+                      <div class="position-relative mb-3">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label class="card-title">Residence:</label>
+                          </div>
+                          <div>
+                            <mat-radio-group formControlName="isResidentBeneficaire" color="primary">
+                              <mat-radio-button value="true">Résident</mat-radio-button>
+                              <mat-radio-button value="false">Non Résident</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="position-relative mb-3 custom-form-row">
+                              <mat-form-field class="w-100">
+                                <input matInput name="paysResidence" id="paysResidence" placeholder="Pays de Résidence " type="text" formControlName="paysResidenceBeneficaire">
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label class="card-title">Personnalité publique PPE:</label>
+                          <mat-radio-group formControlName="pPEBeneficaire" color="primary">
+                            <mat-radio-button value="false">Non</mat-radio-button>
+                            <mat-radio-button value="true">Oui</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                        <div class="col-md-6" *ngIf="Enregistrer.get('step2.PPEBeneficaire')?.value === 'true'">
+          
+                          <mat-form-field>
+                            <mat-label>Fonction</mat-label>
+                            <input matInput name="fonction" id="fonction" placeholder="" type="text" formControlName="fonctionBeneficaire">
+                          </mat-form-field>
+                        </div>
+                      </div><br>
+                    
+                    </div>
+                    
+          
+          
+            <div>
+              <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
+              <button mat-button matStepperNext  class="btn btn-warning custom-next-button">suivant</button>
+            </div>
+        </div>
+      </mat-step>
+      
+      
+      
+    
+    
+      <!-- ... STEP3 -->
+      <mat-step [stepControl]="step3form">
+
+        <ng-template matStepLabel>Informations bancaires</ng-template>
+
+        <div formGroupName="step3" class="d-flex flex-column align-items-center justify-content-center">
+          <div>
+            <label class="card-subtitle">Ajouter un banque:</label>
+          </div>
+          <div class="position-relative mb-3 form-row">
+            
+            <div class="col-md-6">
+                  
+              <mat-form-field class="w-100">
+              <input matInput type="text" formControlName="banque" class="form-control" placeholder="banque"></mat-form-field>
+            </div>
+        
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                <input matInput type="text" formControlName="adressebanque" class="form-control" placeholder="adresse">
+                </mat-form-field>
+                 
+              </div>
+              <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                    <input matInput type="text" formControlName="code" class="form-control" placeholder="Code BIC/SWIFT"></mat-form-field>
+                 
+              </div>
+              
+              <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                    <input matInput type="text" formControlName="numCompte" class="form-control" placeholder="Numéro compte bancaire"></mat-form-field>
+             </div>
+               
+            
+            <div class="form-row mt-4" class="d-flex justify-content-center align-items-center vh-100">
+              <div class="col-md-6">
+                <button type="button" class="btn btn-primary" (click)="addBank()">Ajouter</button>
+              </div>
+            </div>
+          
+        </div>
+        <div class="col-md-12 mt-4 mb-4 box">
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Banque</th>
+                  <th>Adresse</th>
+                  <th>Code</th>
+                  <th>Numéro du Compte Bancaire</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listData">
+                  <td><span>{{ item.banque }}</span></td>
+                  <td><span>{{ item.adressebanque }}</span></td>
+                  <td><span>{{ item.code }}</span></td>
+                  <td><span>{{ item.numCompte }}</span></td>
+                  <td><button type="button" class="btn btn-primary add-button" (click)="removeBank(item)">Supprimer</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <div>
+            <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
+            <button mat-button matStepperNext class="btn btn-warning custom-next-button">Suivant</button>
+          </div>
+        </div>
+      </mat-step>
+      
+
+  <!-- ... STEP4 ... -->
+
+
+  
+    <mat-step [stepControl]="step4form">
+      <div formGroupName="step4">
+        <ng-template matStepLabel>Engagement</ng-template>
+        <p>
+          <mat-checkbox formControlName="certification" required>
+            Je certifie l’exactitude de l’information et l’authenticité des documents fournis
+          </mat-checkbox>
+        </p>
+        <div>
+          <mat-form-field>
+          <mat-label>Nom et Prénom de l'Agent </mat-label>
+          <input matInput placeholder="Nom et Prénom" formControlName="nomPrenomAgent" >
+        </mat-form-field>
+      </div>
+      <div><mat-form-field>
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="datePicker" placeholder="Sélectionner une date" formControlName="datesubmit" >
+          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+        </div>
+       
+        <div>
+          <button mat-button matStepperPrevious class="btn btn-warning custom-previous-button">Précédent</button>
+          <button mat-raised-button class="btn btn-warning custom-next-button" >Enregistrer</button>
+
+        </div>
+      </div>
+    </mat-step>
+    
+    
+    
+      
+    
+    </mat-horizontal-stepper>
+  </form> 
+
+
+</div>

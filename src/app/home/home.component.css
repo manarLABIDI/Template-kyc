@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.home {
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    max-height: 70vh; 
+    margin-right: 0px; 
+    object-fit: contain; 
+}
+
+.content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex; 
+    gap: 20px; /* Add some spacing between buttons */
+}
+
+.btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #FF8C00; /* Primary button color */
+    color: #fff; /* Text color for primary button */
+}
+
+.btn-success {
+    background-color: #00008B; /* Success button color */
+    color: #fff; /* Text color for success button */
+}
